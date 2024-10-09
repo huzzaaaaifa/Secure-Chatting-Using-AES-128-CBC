@@ -1,10 +1,5 @@
 # Secure-Chatting-Using-AES-128-CBC
 
-Here's how you can adapt the `README.md` for a GitHub repository, with a more structured and professional layout:
-
----
-
-# Secure Chatting System
 
 A secure real-time chat system using **AES-128-CBC** encryption to protect the confidentiality of messages.
 
