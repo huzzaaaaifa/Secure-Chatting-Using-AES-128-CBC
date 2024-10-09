@@ -46,7 +46,7 @@ A secure real-time chat system using **AES-128-CBC** encryption to protect the c
 1. Clone this repository:
    ```bash
    git clone https://github.com/huzzaaaaifa/Secure-Chatting-Using-AES-128-CBC.git
-   cd Secure-Chatting-Using-AES-128-CBC.
+   cd Secure-Chatting-Using-AES-128-CBC
    ```
 
 2. Install the dependencies:
