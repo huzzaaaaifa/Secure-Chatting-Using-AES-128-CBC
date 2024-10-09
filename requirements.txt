@@ -1,0 +1,8 @@
+hashlib
+os
+random
+socket
+datetime
+getpass
+re
+pycryptodome
