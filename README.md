@@ -25,7 +25,7 @@ A secure real-time chat system using **AES-128-CBC** encryption to protect the c
 - **Python** for socket programming and encryption implementation.
 - **AES-128-CBC** for secure encryption.
 - **Sockets** for real-time communication between clients and the server.
-- **Hashing** for optional message integrity checks (e.g., HMAC or SHA).
+- **Hashing** for securily storing passwords.
 - **Deffie-Helmen Key Exchange Mechanism** for securily exchanging the client and server's public keys.
 
 ## How It Works
