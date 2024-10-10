@@ -84,7 +84,6 @@ The client will prompt you to input messages, which will be encrypted and sent t
 - No Rate Limiting for Login Attempts: Multiple login attempts can be made without restriction, making it susceptible to brute-force attacks.
 - Insecure Email Validation: The email validation is done simply by checking the presence of "@isb.nu.edu.pk", which is weak and could allow bypassing with similar addresses.
 - No Logging: Important events, like login failures or registration errors, are only printed to the console and not logged for future analysis or monitoring.
-- Unprotected Password Storage: The server doesn't check or limit the number of failed login attempts, which makes it vulnerable to brute-force attacks.
 - Weak Diffie-Hellman Implementation: The prime number PRIME and generator ALPHA are hardcoded and relatively small. This weakens the security of the Diffie-Hellman key exchange.
 - File-Based Storage: Credentials are stored in a text file (creds.txt), which is not secure for sensitive data like passwords. A database with proper access control should be used instead.
 
