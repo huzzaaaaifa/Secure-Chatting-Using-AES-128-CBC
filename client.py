@@ -33,7 +33,7 @@ def create_socket():
     sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 
     # setup an address
-    server_address = ('localhost', 8082)
+    server_address = ('localhost', 8080)
     sock.connect(server_address)
 
     return sock
@@ -99,7 +99,7 @@ def main():
                     if result == "@isb.nu.edu.pk":
                         break
                 else:
-                    print("Not Valid Email\nEnter Again\n")
+                    print("Not Valid Email\n Domain not known \n Enter Again\n")
                     print(email_prompt)
 
             msg = email.encode('utf-8')
