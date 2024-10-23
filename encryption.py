@@ -4,7 +4,7 @@ from Cryptodome.Cipher import AES
 from Cryptodome.Random import get_random_bytes
 from Crypto.Util.Padding import pad, unpad
 
-PRIME = 999331
+PRIME = 999331 # any long long prime number
 a = random.randint(1, PRIME-1)
 if ((a ** (PRIME-1) % PRIME)) == 1:
     is_prime = True
@@ -35,13 +35,13 @@ class AES128:
         self.key = hashlib.sha256(str(shared_key).encode('utf-8')).digest()[:16] 
     
     def encrypt(self, data):
-        vector = get_random_bytes(AES.block_size)
-        encryption_cipher = AES.new(self.key, AES.MODE_CBC, vector)
-        return vector + encryption_cipher.encrypt(pad(data, AES.block_size))
+        IV = get_random_bytes(AES.block_size)
+        encryption_cipher = AES.new(self.key, AES.MODE_CBC, IV)
+        return IV + encryption_cipher.encrypt(pad(data, AES.block_size))
 
 
     def decrypt(self, data):
-        file_vector = data[:AES.block_size]
-        decryption_cipher = AES.new(self.key, AES.MODE_CBC, file_vector)
+        IV = data[:AES.block_size]
+        decryption_cipher = AES.new(self.key, AES.MODE_CBC, IV)
         return unpad(decryption_cipher.decrypt(data[AES.block_size:]), AES.block_size)
 
