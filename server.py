@@ -2,7 +2,7 @@ import socket
 import os
 import datetime
 from encryption import generate_public_private_key, calculate_shared_secret, AES128
-from hashing import register_user, verify_user, username_exists, change_username, change_password
+from hashing import register_user, verify_user, username_exists
 
 def print_rules(client_socket):
     rules = """
@@ -20,13 +20,11 @@ def print_rules(client_socket):
           1 lowercase letter
           1 number
           1 special character (!@#$%^&*)
+          
+    3. NO email other emails than FAST NUCES email which is @isb.nu.edu.pk will be considered such as  @gmail.com, @yahoo.com etc etc
 
-    3. Data Security:
+    4. Data Security:
         All communications are encrypted for security
-
-
-    4. Session Timeout:
-        If you're inactive for 15 minutes, you will be logged out automatically
 
     5. Behavior:
         Please refrain from using inappropriate language
@@ -46,7 +44,7 @@ def main():
     server_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 
     # define the server address
-    server_address = ('', 8082)
+    server_address = ('', 8080)
 
     # bind the socket to the specified IP and port
     server_socket.bind(server_address)
@@ -117,7 +115,7 @@ def handle_client(client_socket):
             decrypted = aes_cipher.decrypt(password)
             password = decrypted.decode('utf-8')
 
-            print(f"Client provided password (encrypted): {password}")
+            print(f"Client provided password : {password}")
 
             if register_user(email, username, password):
                 client_socket.send("Registration successful You can now login\n".encode('utf-8'))
@@ -150,9 +148,12 @@ def handle_client(client_socket):
             password = decrypted.decode('utf-8')
 
             print(f"Client attempting to log in with username: {username}")
+            print(f"Client attempting to log in with password : {password}")
 
             if verify_user(username, password):
                 client_socket.send("Login successful\n".encode('utf-8'))
+                print(f"Client logged in with username: {username}")
+                print(f"Client logged in with password : {password}")
                 loggedIn = True
                 print(f"Login successful for user: {username}")
                 break
